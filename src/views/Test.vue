@@ -1,10 +1,8 @@
 <template>
   <div class="test">
-    <div>
-      平均值: {{average}}
-    </div>
+    <div>平均值: {{average}}</div>
     <button @click="update">加载更多</button>
-    <div class="list" v-for="item in dataList" :key="item.id">
+    <div class="list" v-for="item in $store.state.dataList" :key="item.id">
       <div>{{item.id}}</div>
       <div>{{item.data}}</div>
       <div>{{item.time}}</div>
@@ -19,12 +17,11 @@ export default {
   data () {
     return {
       dataList: [],
-      average: ''
+      average: '',
+      daTa: []
     }
   },
-  computed: {
-
-  },
+  computed: {},
   mounted () {
     mock().then(res => {
       console.log(res)
@@ -34,23 +31,28 @@ export default {
     })
   },
   methods: {
-
     update () {
-
+      const num = Math.floor(Math.random() * 10)
+      mock(
+        this.$store.state.dataList.length,
+        this.$store.state.dataList.length + num
+      ).then(res => {
+        this.daTa = [...this.daTa, ...res]
+        console.log(this.daTa)
+        this.$store.commit('assignDataList', this.daTa)
+      })
     }
   }
 }
 </script>
 
 <style scoped lang="less">
-
-.test{
-
-  .list{
+.test {
+  .list {
     display: flex;
     flex-direction: row;
   }
-  button{
+  button {
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: blue;
@@ -60,5 +62,4 @@ export default {
     width: 100%;
   }
 }
-
 </style>
