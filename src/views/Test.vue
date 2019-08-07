@@ -3,11 +3,11 @@
     <div>平均值: {{$store.state.average}}</div>
     <button @click="update">加载更多</button>
     <div style="overflow: auto; height:608px">
-    <div class="list" v-for="item in $store.state.dataList" :key="item.id">
-      <div class="id">{{item.id}}</div>
-      <div class="data">{{item.data}}</div>
-      <div class="time">{{item.time}}</div>
-    </div>
+      <div class="list" v-for="item in $store.state.dataList" :key="item.id">
+        <div class="id">id:{{item.id}}</div>
+        <div class="data">data:{{item.data}}</div>
+        <div class="time">time:{{item.time}}</div>
+      </div>
     </div>
   </div>
 </template>
