@@ -1,6 +1,6 @@
 <template>
   <div class="test">
-    <div>平均值: {{average}}</div>
+    <div>平均值: {{$store.state.average}}</div>
     <button @click="update">加载更多</button>
     <div class="list" v-for="item in $store.state.dataList" :key="item.id">
       <div>{{item.id}}</div>

@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    dataList: []
+    dataList: [],
+    average: 0
   },
   mutations: {
     assignDataList (state, list) {
@@ -13,7 +14,14 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    getAverage: state => 0,
+    getAverage: (state) => {
+      let sumNub = null
+      for (let i = 0; i < state.dataList.length; i++) {
+        sumNub += state.dataList[i].data
+      }
+      const nub = sumNub / state.dataList.length
+      state.average = nub.toFixed(2)
+    },
     getData: state => state.dataList
   },
   actions: {
