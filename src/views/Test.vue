@@ -13,7 +13,7 @@
 </template>
 
 <script>
-
+import mock from '../mock.js'
 export default {
   name: 'test',
   data () {
@@ -24,6 +24,14 @@ export default {
   },
   computed: {
 
+  },
+  mounted () {
+    mock().then(res => {
+      console.log(res)
+      this.daTa = [...this.daTa, ...res]
+      console.log(this.daTa)
+      this.$store.commit('assignDataList', this.daTa)
+    })
   },
   methods: {
 
