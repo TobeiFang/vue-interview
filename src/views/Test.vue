@@ -2,10 +2,12 @@
   <div class="test">
     <div>平均值: {{$store.state.average}}</div>
     <button @click="update">加载更多</button>
+    <div style="overflow: auto; height:608px">
     <div class="list" v-for="item in $store.state.dataList" :key="item.id">
-      <div>{{item.id}}</div>
-      <div>{{item.data}}</div>
-      <div>{{item.time}}</div>
+      <div class="id">{{item.id}}</div>
+      <div class="data">{{item.data}}</div>
+      <div class="time">{{item.time}}</div>
+    </div>
     </div>
   </div>
 </template>
@@ -51,6 +53,20 @@ export default {
   .list {
     display: flex;
     flex-direction: row;
+    div {
+      text-align: left;
+      margin-right: 20px;
+      width: 100px;
+    }
+    .id {
+      width: 100px;
+      margin-left: 32%;
+    }
+    .data {
+    }
+    .time {
+      width: 500px;
+    }
   }
   button {
     margin-top: 10px;
